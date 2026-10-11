@@ -1,3 +1,5 @@
+import AddButton from "@/Components/shared/AddButton";
+import SaveButton from "@/Components/shared/SaveButton";
 import { IWorkout } from "@/types/workout.types";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -110,8 +112,8 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
           </div>
 
           <div className="card-actions space-x-2">
-            <button className="btn btn-success">Add to today's plan</button>
-            <button className="btn btn-outline">Save for later</button>
+            <AddButton workout={data}></AddButton>
+            <SaveButton workout={data}></SaveButton>
           </div>
         </div>
       </div>

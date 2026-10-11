@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Oswald } from "next/font/google";import "./globals.css";
+import { Inter, Oswald } from "next/font/google";
+import "./globals.css";
 import Navbar from "@/Components/shared/Navbar";
 import Footer from "@/Components/shared/Footer";
+import WorkoutProvider from "@/contexts/WorkoutContext";
 
 export const oswald = Oswald({
   variable: "--font-oswald",
@@ -27,9 +29,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${oswald.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Navbar></Navbar>
-        <main className="px-8">{children}</main>
-        <Footer></Footer>
+        <WorkoutProvider>
+          <Navbar></Navbar>
+          <main className="px-8">{children}</main>
+          <Footer></Footer>
+        </WorkoutProvider>
       </body>
     </html>
   );
