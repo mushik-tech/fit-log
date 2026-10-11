@@ -26,9 +26,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       date-theme="dark"
       className={`${oswald.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col font-sans">
         <Navbar></Navbar>
-        <main>{children}</main>
+        <main className="px-8">{children}</main>
         <Footer></Footer>
       </body>
     </html>
