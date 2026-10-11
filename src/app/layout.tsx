@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col font-sans">
         <WorkoutProvider>
           <Navbar></Navbar>
-          <main className="px-8">{children}</main>
+          <main className="lg:px-8">{children}</main>
           <Footer></Footer>
         </WorkoutProvider>
       </body>

@@ -13,7 +13,7 @@ const MyPlanPage = () => {
   const { plan, savePlan } = useContext(WorkoutContext);
 
   return (
-    <div className="my-10 px-20">
+    <div className="my-10 px-5 lg:px-20">
       <h1 className="text-3xl font-bold text-white">MY PLAN</h1>
       <p className="mt-1 text-sm text-[#9CA3AF]">
         Cap of five lifts for today. Finish them, then load more.

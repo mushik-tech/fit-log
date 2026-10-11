@@ -43,7 +43,7 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
   } = data;
 
   return (
-    <div className="my-10 px-30">
+    <div className="my-10 lg:px-30">
       <div className="card lg:card-side bg-base-100 shadow-sm">
         <figure className="w-120 rounded-2xl">
           <Image src={image} alt={image} width={400} height={600} />

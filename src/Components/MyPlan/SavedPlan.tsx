@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaFire, FaRegStar } from "react-icons/fa6";
 import { LuClock } from "react-icons/lu";
+import RemoveButton from "./RemoveButton";
 
 const SavedPlan = ({ data }: { data: IWorkout[] }) => {
   if (data.length === 0) {
@@ -29,7 +30,7 @@ const SavedPlan = ({ data }: { data: IWorkout[] }) => {
       {data.map((plan) => (
         <div
           key={plan.id}
-          className="bg-[#151921] border-3 border-[#232732] rounded-2xl p-7 flex justify-between items-center"
+          className="bg-[#151921] border-3 border-[#232732] rounded-2xl p-7 flex justify-between items-center flex-col md:flex-row gap-4"
         >
           <div className="flex gap-4 items-center">
             <div className="w-40">
@@ -68,7 +69,7 @@ const SavedPlan = ({ data }: { data: IWorkout[] }) => {
                 View Details
               </button>
             </Link>
-            <button className="text-[#6B7280]">X</button>
+            <RemoveButton id={plan.id}></RemoveButton>
           </div>
         </div>
       ))}
