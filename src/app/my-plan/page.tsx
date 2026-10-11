@@ -1,7 +1,9 @@
 "use client";
 
 import SavedPlan from "@/Components/MyPlan/SavedPlan";
+import SaveStat from "@/Components/MyPlan/SaveStat";
 import TodayPlan from "@/Components/MyPlan/TodayPlan";
+import TodayStat from "@/Components/MyPlan/TodayStat";
 import { WorkoutContext } from "@/contexts/WorkoutContext";
 import React, { useContext, useState } from "react";
 
@@ -16,6 +18,14 @@ const MyPlanPage = () => {
       <p className="mt-1 text-sm text-[#9CA3AF]">
         Cap of five lifts for today. Finish them, then load more.
       </p>
+
+      <div>
+        {selectedTab === "today" ? (
+          <TodayStat></TodayStat>
+        ) : (
+          <SaveStat></SaveStat>
+        )}
+      </div>
 
       {/* name of each tab group should be unique */}
       <div className="flex justify-between">
