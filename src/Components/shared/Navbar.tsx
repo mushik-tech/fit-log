@@ -17,7 +17,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="border-b border-[#2D313B] opacity-95 lg:px-20 bg-black">
+    <div className="border-b border-[#2D313B] opacity-95 lg:px-20 bg-black sticky top-0 z-50">
       <div className="navbar shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
