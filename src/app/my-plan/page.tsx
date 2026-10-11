@@ -5,12 +5,35 @@ import SaveStat from "@/Components/MyPlan/SaveStat";
 import TodayPlan from "@/Components/MyPlan/TodayPlan";
 import TodayStat from "@/Components/MyPlan/TodayStat";
 import { WorkoutContext } from "@/contexts/WorkoutContext";
+import { IWorkout } from "@/types/workout.types";
 import React, { useContext, useState } from "react";
 
 const MyPlanPage = () => {
   const [selectedTab, isSelectedTab] = useState("today");
 
   const { plan, savePlan } = useContext(WorkoutContext);
+
+  const [sortBy, setSortBy] = useState("duration");
+
+  console.log(sortBy);
+
+  const handleSorting = (data: IWorkout[]) => {
+    const workout = [...data];
+
+    if (sortBy === "duration") {
+      workout.sort((a, b) => b.duration - a.duration);
+    } else if (sortBy === "calories") {
+      workout.sort((a, b) => b.caloriesBurned - a.caloriesBurned);
+    } else if (sortBy === "rating") {
+      workout.sort((a, b) => {
+        const ratingA = Number(a.rating ?? 0);
+        const ratingB = Number(b.rating ?? 0);
+        return ratingB - ratingA;
+      });
+    }
+
+    return workout;
+  };
 
   return (
     <div className="my-10 px-5 lg:px-20">
@@ -46,13 +69,26 @@ const MyPlanPage = () => {
             onClick={() => isSelectedTab("save")}
           />
         </div>
+
+        <div className="flex gap-2 items-center">
+          <p className="w-25 text-[#8A92A0]">Sort By</p>
+          <select
+            onChange={(e) => setSortBy(e.target.value)}
+            value={sortBy}
+            className="select bg-[#13161D] rounded-xl text-white border-2 border-[#232732]"
+          >
+            <option value={"duration"}>Duration</option>
+            <option value={"calories"}>Calories</option>
+            <option value={"rating"}>Rating</option>
+          </select>
+        </div>
       </div>
 
       <div>
         {selectedTab === "today" ? (
-          <TodayPlan data={plan}></TodayPlan>
+          <TodayPlan data={handleSorting(plan)}></TodayPlan>
         ) : (
-          <SavedPlan data={savePlan}></SavedPlan>
+          <SavedPlan data={handleSorting(savePlan)}></SavedPlan>
         )}
       </div>
     </div>
