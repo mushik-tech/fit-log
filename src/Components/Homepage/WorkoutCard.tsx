@@ -2,6 +2,7 @@ import Image from "next/image";
 import { LuClock } from "react-icons/lu";
 import { FaFire } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa6";
+import Link from "next/link";
 import { IWorkout } from "@/types/workout.types";
 
 export interface WorkoutCardProps {
@@ -21,7 +22,7 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
   } = workout;
 
   return (
-    <div>
+    <Link href={`/workout/${id}`}>
       <div className="card bg-[#15171D] rounded-3xl shadow-sm">
         <figure>
           <Image
@@ -61,7 +62,7 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
