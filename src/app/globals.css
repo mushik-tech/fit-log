@@ -1,2 +1,14 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: black --default;
+}
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-oswald);
+}
+
+
+h1, h2 {
+  font-family: var(--font-heading);
+}
